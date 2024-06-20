@@ -30,8 +30,8 @@ musicaFocoInput.addEventListener('change', () => {
 
 //Nós estamos criando um evento ao clicar através do 'click' é passado uma arrow function que não tem parametro para funcionar, porem ele altera o atributo data-contexto para foco ou descanso-curto para que seja trocado a cor da pagina.
 focoBt.addEventListener('click', () => {
-    tempoDecorridoEmMinutos = 25;
-    tempoSegundos = 0;
+    tempoDecorridoEmMinutos = 0;
+    tempoSegundos = 5;
     alterarContexto('foco');
     focoBt.classList.add('active')
 })
@@ -79,7 +79,11 @@ function alterarContexto(contexto){
 const contagemRegressiva = () => {
     if(tempoDecorridoEmMinutos <= 0 && tempoSegundos <= 0){
         beep.play();
-        alert('Tempo finalizado') 
+        const focoAtivo = html.getAttribute('data-contexto') == 'foco'
+        if(focoAtivo){
+            const evento = new CustomEvent('FocoFinalizado')
+            document.dispatchEvent(evento);
+        } 
         zerar()
         return
     }
