@@ -30,8 +30,8 @@ musicaFocoInput.addEventListener('change', () => {
 
 //Nós estamos criando um evento ao clicar através do 'click' é passado uma arrow function que não tem parametro para funcionar, porem ele altera o atributo data-contexto para foco ou descanso-curto para que seja trocado a cor da pagina.
 focoBt.addEventListener('click', () => {
-    tempoDecorridoEmMinutos = 0;
-    tempoSegundos = 5;
+    tempoDecorridoEmMinutos = 25;
+    tempoSegundos = 0;
     alterarContexto('foco');
     focoBt.classList.add('active')
 })
